@@ -2,11 +2,15 @@ import pygame
 import sys
 import time
 
-# Constants for screen size and colors
+# inisiasi ukuran per object 
 WIDTH, HEIGHT = 800, 600
 BACKGROUND_COLOR = (30, 30, 30)
 TOWER_COLOR = (200, 200, 200)
-DISK_COLORS = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 165, 0)]  # Additional colors for more disks
+DISK_COLORS = [(255, 0, 0), 
+               (0, 255, 0), 
+               (0, 0, 255), 
+               (255, 255, 0), 
+               (255, 165, 0)]  # disk color
 
 disk_count = 3
 towers = []
@@ -25,6 +29,7 @@ def initialize_game():
     move_count = 0
     game_solved = False
 
+# untuk cisualisasi pada pygame
 def draw_towers(screen):
     screen.fill(BACKGROUND_COLOR)
     tower_width = 20
