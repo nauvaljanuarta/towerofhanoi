@@ -18,7 +18,7 @@ class TowerOfHanoi:
         self.initialize_game()
 
     def initialize_game(self):
-        self.towers = [list(range(self.disk_count, 0, -1)), [], []] 
+        self.towers = [list(range(self.disk_count, 0, -1)), [], []] #inisialisasi caakram sesuai diskcount contoh 3 berarti 
         self.selected_disk = None
         self.selected_tower = None
         self.mouse_pos = (0, 0)
@@ -88,18 +88,33 @@ class TowerOfHanoi:
                 self.game_solved = True
 
     def solve_hanoi(self, n, from_tower, to_tower, aux_tower): #pakai stack untuk dfs searchnya
-        stack = [(n, from_tower, to_tower, aux_tower)]
+        stack = [(n, from_tower, to_tower, aux_tower)] 
         while stack:
-            n, from_tower, to_tower, aux_tower = stack.pop() #last in first out untuk pop
+            n, from_tower, to_tower, aux_tower = stack.pop() #last in first out untuk pop (mengambil stack yang paling akhir)
             if n == 1:
                 self.move_disk(from_tower, to_tower)
                 self.draw_towers()
-                time.sleep(0.2)
+                time.sleep(0.9)
             else:
                 stack.append((n - 1, aux_tower, to_tower, from_tower))
                 stack.append((1, from_tower, to_tower, aux_tower))
                 stack.append((n - 1, from_tower, aux_tower, to_tower))
     
+    # def solve_hanoi(self, n, from_tower, to_tower, aux_tower):
+    #   if n == 1:
+    #       self.move_disk(from_tower, to_tower)
+    #       self.draw_towers()
+    #       time.sleep(0.2)
+    #       return
+
+    #   self.solve_hanoi(n - 1, from_tower, aux_tower, to_tower)
+
+    #   self.move_disk(from_tower, to_tower)
+    #   self.draw_towers()
+    #   time.sleep(0.2)
+
+    #   self.solve_hanoi(n - 1, aux_tower, to_tower, from_tower)
+
     def handle_mouse_down(self, pos):
         solve_button_rect = pygame.Rect(WIDTH - 150, 20, 100, 40)
         increase_button = pygame.Rect(50, 20, 40, 40)
